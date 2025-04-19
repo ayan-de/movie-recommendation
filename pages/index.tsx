@@ -18,7 +18,7 @@ export default function Home() {
       <Banner
         title="Panther Panchali"
         subTitle="First Apu Triology"
-        imgUrl="./static/banner.webp"
+        imgUrl="./static/rajnikant.jpg"
       />
       {/* <Card/> */}
     </>

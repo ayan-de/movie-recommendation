@@ -28,9 +28,10 @@
   
   .logoWrapper {
     color: var(--red);
-    width: 8rem /* 128px */;
-    font-size: 2rem;
+    width: 330px /* 128px */;
+    font-size: 3rem;
     font-weight: bold;
+    height: 72px;
   }
   
   .navItems {
