@@ -11,6 +11,11 @@ const SectionCards = (props: SectionProps) => {
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.cardWrapper}>
         <Card imgUrl="/static/animal.jpg" size="large" />
+        <Card imgUrl="/static/animal.jpg" size="large" />
+        <Card imgUrl="/static/animal.jpg" size="large" />
+        <Card imgUrl="/static/animal.jpg" size="large" />
+        <Card imgUrl="/static/animal.jpg" size="large" />
+        <Card imgUrl="/static/animal.jpg" size="large" />
       </div>
     </section>
   );
