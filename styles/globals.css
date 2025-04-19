@@ -33,7 +33,7 @@ body {
   font-family: "Roboto Slab", serif;
   /* background-color: var(--black40); */
   color: white;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   }
 
   ::-webkit-scrollbar {

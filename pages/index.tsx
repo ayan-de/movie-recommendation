@@ -2,6 +2,7 @@ import Head from "next/head";
 // import Image from "next/image";
 // import styles from "@/styles/Home.module.css";
 import Banner from "../components/banner/banner";
+import NavBar from "@/components/nav/navbar";
 
 export default function Home() {
   return (
@@ -12,12 +13,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Pixy Box</h1>
-      {/* <NavBar/> */}
+      {/* <h1>Pixy Box</h1> */}
+      <NavBar username="deayan252@gmail.com" />
       <Banner
-        title="Kala"
-        subTitle="Rajnikant Special"
-        imgUrl="./static/rajnikant.jpg"
+        title="Panther Panchali"
+        subTitle="First Apu Triology"
+        imgUrl="./static/banner.webp"
       />
       {/* <Card/> */}
     </>
