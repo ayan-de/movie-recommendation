@@ -31,7 +31,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Roboto Slab", serif;
-  background-color: var(--black40);
+  /* background-color: var(--black40); */
   color: white;
   overflow-x: hidden;
   }
@@ -91,6 +91,7 @@ button {
   margin: 0;
   border: 0px;
   outline: 0px;
+  color: var(--white10);
 }
 
 :root {

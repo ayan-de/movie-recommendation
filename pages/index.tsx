@@ -1,7 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "@/styles/Home.module.css";
-
+// import Image from "next/image";
+// import styles from "@/styles/Home.module.css";
+import Banner from "../components/banner/banner";
 
 export default function Home() {
   return (
@@ -14,7 +14,11 @@ export default function Home() {
       </Head>
       <h1>Pixy Box</h1>
       {/* <NavBar/> */}
-      <Banner/>
+      <Banner
+        title="Kala"
+        subTitle="Rajnikant Special"
+        imgUrl="./static/rajnikant.jpg"
+      />
       {/* <Card/> */}
     </>
   );
