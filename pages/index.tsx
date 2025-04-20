@@ -33,7 +33,7 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <h1>Pixy Box</h1> */}
-      <NavBar username="deayan252@gmail.com" />
+      <NavBar />
       <Banner
         title="Panther Panchali"
         subTitle="First Apu Triology"

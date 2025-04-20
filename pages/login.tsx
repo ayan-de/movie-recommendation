@@ -33,8 +33,8 @@ const Login = () => {
   }, [router]);
 
   const handleOnChangeEmail = (e) => {
+    e.preventDefault();
     setUserMsg("");
-    console.log("event", e);
     const email = e.target.value;
     setEmail(email);
   };
