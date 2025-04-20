@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/login.module.css";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { magic } from "../lib/magic-client";
 
@@ -9,8 +9,28 @@ import { magic } from "../lib/magic-client";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [userMsg, setUserMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
+
+  //adding router events
+  //so we are adding loading while the route change process is taking place
+  //refer docs
+  useEffect(() => {
+    const handleComplete = () => {
+      setIsLoading(false);
+    };
+    //listening to event
+    router.events.on("routeChangeComplete", handleComplete);
+    //handling error event
+    router.events.on("routeChangeError", handleComplete);
+
+    //component unmounted with off method
+    return () => {
+      router.events.off("routeChangeComplete", handleComplete);
+      router.events.off("routeChangeError", handleComplete);
+    };
+  }, [router]);
 
   const handleOnChangeEmail = (e) => {
     setUserMsg("");
@@ -22,6 +42,7 @@ const Login = () => {
   const handleLoginWithEmail = async (e) => {
     e.preventDefault();
     console.log("hi button");
+    setIsLoading(true);
     if (email) {
       if (email === "deayan252@gmail.com") {
         //  log in a user by their email
@@ -31,19 +52,23 @@ const Login = () => {
           });
           console.log({ didToken });
           if (didToken) {
+            // setIsLoading(false);
             // route to dashboard
             //we get didToken becoz our session net expired yet
             router.push("/");
           }
         } catch (error) {
           // Handle errors if required!
+          setIsLoading(false);
           console.error("Something went wrong logging in", error);
         }
       } else {
+        setIsLoading(false);
         setUserMsg("Something went wrong logging in");
       }
     } else {
       // show user message
+      setIsLoading(false);
       setUserMsg("Enter a valid email/Phone No");
     }
   };
@@ -76,7 +101,7 @@ const Login = () => {
 
           <p className={styles.userMsg}>{userMsg}</p>
           <button onClick={handleLoginWithEmail} className={styles.loginBtn}>
-            Sign In
+            {isLoading ? "Loading..." : "Sign In"}
           </button>
         </div>
       </main>
