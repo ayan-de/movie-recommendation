@@ -12,7 +12,7 @@ import { getVideos } from "../lib/videos";
 
 //implementing server side rendering
 export async function getServerSideProps(context) {
-  const animeVideos = getVideos();
+  const animeVideos = await getVideos();
   return {
     props: { animeVideos }, // will be passed to the page component as props
   };
