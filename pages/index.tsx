@@ -12,13 +12,19 @@ import { getVideos } from "../lib/videos";
 
 //implementing server side rendering
 export async function getServerSideProps(context) {
-  const animeVideos = await getVideos();
+  const animeVideos = await getVideos("disney trailer");
+  const youHaveWatchedVideos = await getVideos("Bollywood trailer");
+  const ourRecommendMovies = await getVideos("indian music");
   return {
-    props: { animeVideos }, // will be passed to the page component as props
+    props: { animeVideos, ourRecommendMovies, youHaveWatchedVideos }, // will be passed to the page component as props
   };
 }
 
-export default function Home({ animeVideos }) {
+export default function Home({
+  animeVideos,
+  ourRecommendMovies,
+  youHaveWatchedVideos,
+}) {
   return (
     <>
       <Head>
@@ -34,8 +40,17 @@ export default function Home({ animeVideos }) {
         subTitle="First Apu Triology"
         imgUrl="./static/rajnikant.jpg"
       />
-      <SectionCards title="Anime" videos={animeVideos} size="large" />
-      <SectionCards title="Hollywood" videos={animeVideos} size="medium" />
+      <SectionCards title="Top this weeks" videos={animeVideos} size="large" />
+      <SectionCards
+        title="Recommendations"
+        videos={ourRecommendMovies}
+        size="medium"
+      />
+      <SectionCards
+        title="You Have Watched"
+        videos={youHaveWatchedVideos}
+        size="small"
+      />
     </>
   );
 }
