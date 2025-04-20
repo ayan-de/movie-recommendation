@@ -2,11 +2,15 @@ import Head from "next/head";
 import styles from "../styles/login.module.css";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import { magic } from "../lib/magic-client";
 
 //route so according to rule a react component
 const Login = () => {
   const [email, setEmail] = useState("");
   const [userMsg, setUserMsg] = useState("");
+
+  const router = useRouter();
 
   const handleOnChangeEmail = (e) => {
     setUserMsg("");
@@ -19,10 +23,28 @@ const Login = () => {
     e.preventDefault();
     console.log("hi button");
     if (email) {
-      // route to dashboard
+      if (email === "deayan252@gmail.com") {
+        //  log in a user by their email
+        try {
+          const didToken = await magic.auth.loginWithMagicLink({
+            email,
+          });
+          console.log({ didToken });
+          if (didToken) {
+            // route to dashboard
+            //we get didToken becoz our session net expired yet
+            router.push("/");
+          }
+        } catch (error) {
+          // Handle errors if required!
+          console.error("Something went wrong logging in", error);
+        }
+      } else {
+        setUserMsg("Something went wrong logging in");
+      }
     } else {
       // show user message
-      setUserMsg("Enter a valid email address");
+      setUserMsg("Enter a valid email/Phone No");
     }
   };
 

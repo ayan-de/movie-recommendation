@@ -5,7 +5,6 @@ import Banner from "../components/banner/banner";
 import NavBar from "@/components/nav/navbar";
 import SectionCards from "@/components/card/section-card";
 import { getVideos } from "../lib/videos";
-
 // type HomeProps ={
 //   animeVideos
 // }
