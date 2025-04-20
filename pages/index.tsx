@@ -4,8 +4,11 @@ import Head from "next/head";
 import Banner from "../components/banner/banner";
 import NavBar from "@/components/nav/navbar";
 import SectionCards from "@/components/card/section-card";
+import { getVideos } from "../lib/videos";
 
 export default function Home() {
+  const animeVideos = getVideos();
+
   return (
     <>
       <Head>
@@ -21,7 +24,8 @@ export default function Home() {
         subTitle="First Apu Triology"
         imgUrl="./static/rajnikant.jpg"
       />
-      <SectionCards title="Anime" />
+      <SectionCards title="Anime" videos={animeVideos} size="large" />
+      <SectionCards title="Hollywood" videos={animeVideos} size="medium" />
     </>
   );
 }

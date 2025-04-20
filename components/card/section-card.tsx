@@ -1,21 +1,24 @@
 import Card from "./card";
 import styles from "./section-cards.module.css";
 
+type Video = {
+  imgUrl: string;
+};
+
 type SectionProps = {
   title: string;
+  videos: Video[]; // array of Video object
+  size: string;
 };
 const SectionCards = (props: SectionProps) => {
-  const { title } = props;
+  const { title, videos, size } = props; //so here we will get array of videos and size of that section
   return (
     <section className={styles.container}>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.cardWrapper}>
-        <Card id="0" imgUrl="/static/animal.jpg" size="large" />
-        <Card id="1" imgUrl="/static/animal.jpg" size="large" />
-        <Card id="2" imgUrl="/static/animal.jpg" size="large" />
-        <Card id="3" imgUrl="/static/animal.jpg" size="large" />
-        <Card id="4" imgUrl="/static/animal.jpg" size="large" />
-        <Card id="5" imgUrl="/static/animal.jpg" size="large" />
+        {videos.map((video, idx) => {
+          return <Card id={idx} key={idx} imgUrl={video.imgUrl} size={size} />;
+        })}
       </div>
     </section>
   );
