@@ -6,9 +6,19 @@ import NavBar from "@/components/nav/navbar";
 import SectionCards from "@/components/card/section-card";
 import { getVideos } from "../lib/videos";
 
-export default function Home() {
-  const animeVideos = getVideos();
+// type HomeProps ={
+//   animeVideos
+// }
 
+//implementing server side rendering
+export async function getServerSideProps(context) {
+  const animeVideos = getVideos();
+  return {
+    props: { animeVideos }, // will be passed to the page component as props
+  };
+}
+
+export default function Home({ animeVideos }) {
   return (
     <>
       <Head>

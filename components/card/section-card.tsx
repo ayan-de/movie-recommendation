@@ -11,7 +11,7 @@ type SectionProps = {
   size: string;
 };
 const SectionCards = (props: SectionProps) => {
-  const { title, videos, size } = props; //so here we will get array of videos and size of that section
+  const { title, videos = [], size } = props; //so here we will get array of videos and size of that section
   return (
     <section className={styles.container}>
       <h2 className={styles.title}>{title}</h2>
