@@ -38,7 +38,7 @@ export default function Home({
         title="Panther Panchali"
         subTitle="First Apu Triology"
         imgUrl="./static/rajnikant.jpg"
-        videoId="4zH5iYM4wJo"
+        videoId="pSnMt6h6zk0"
       />
       <SectionCards title="Top this weeks" videos={animeVideos} size="large" />
       <SectionCards
