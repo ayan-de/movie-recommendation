@@ -2,13 +2,14 @@ import { useRouter } from "next/router";
 import Modal from "react-modal";
 import styles from "../../styles/Video.module.css";
 import classNames from "classnames";
+import NavBar from "@/components/nav/navbar";
 
 //__next is the root id of our app
 Modal.setAppElement("#__next");
-const Video = () => {
-  const router = useRouter();
-  console.log({ router });
 
+//Implement Incremental Static Regeneration (ISR)
+export async function getStaticProps() {
+  //data to be fetched from API
   const video = {
     title: "Hi cute dog",
     publishTime: "1990-01-01",
@@ -17,10 +18,33 @@ const Video = () => {
     viewCount: 10000,
   };
 
+  return {
+    props: {
+      video,
+    },
+    revalidate: 10, // In seconds
+  };
+}
+
+export async function getStaticPaths() {
+  //list of videos we want isr to go and rebuid
+  const listOfVideos = ["mYfJxlgR2jw", "4zH5iYM4wJo", "KCPEHsAViiQ"];
+  const paths = listOfVideos.map((videoId) => ({
+    params: { videoId },
+  }));
+
+  return { paths, fallback: "blocking" };
+}
+
+const Video = ({ video }) => {
+  const router = useRouter();
+  console.log({ router });
+
   const { title, publishTime, description, channelTitle, viewCount } = video;
 
   return (
     <div className={styles.container}>
+      <NavBar />
       {/* video page {router.query.videoId} */}
       <Modal
         isOpen={true}

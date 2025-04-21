@@ -35,10 +35,10 @@ export default function Home({
       {/* <h1>Pixy Box</h1> */}
       <NavBar />
       <Banner
-        title="Panther Panchali"
-        subTitle="First Apu Triology"
-        imgUrl="./static/rajnikant.jpg"
-        videoId="pSnMt6h6zk0"
+        title="Game of Throne"
+        subTitle="Hollywood Masterclass"
+        imgUrl="./static/got.jpg"
+        videoId="KPLWWIOCOOQ"
       />
       <SectionCards title="Top this weeks" videos={animeVideos} size="large" />
       <SectionCards
