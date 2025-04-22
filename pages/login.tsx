@@ -32,7 +32,7 @@ const Login = () => {
     };
   }, [router]);
 
-  const handleOnChangeEmail = (e) => {
+  const handleOnChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setUserMsg("");
     const email = e.target.value;
@@ -78,6 +78,10 @@ const Login = () => {
     <div className={styles.container}>
       <Head>
         <title>PixyBox SignIn</title>
+        <meta
+          name="google-signin-client_id"
+          content="YOUR_CLIENT_ID.apps.googleusercontent.com"
+        />
       </Head>
       <header className={styles.header}>
         <div className={styles.headerWrapper}>
